@@ -5,6 +5,7 @@ export default function ContactForm() {
             <div className="flex flex-col m-2">
                 <div className="text-black/30">part 1 of 2</div>
                 <div className="text-xl font-semibold">CONTACT INFORMATION</div>
+                <div className="text-black/50 text-lg ">Contact Person</div>
             </div>
 
             {/* 1ST ROW */}
@@ -56,7 +57,38 @@ export default function ContactForm() {
 
             </div>
 
+
+            {/* COMPANY INFO */}
+
+            <div className="text-black/50 text-lg m-2">Company Information</div>
+
             {/* 3RD ROW */}
+
+            
+            <div className="flex flex-row justify-center w-full">
+
+                {/* Company - Name */}
+                <div className="flex flex-col m-2 w-1/2">
+                    <label htmlFor="companyName">Company Name</label>
+                    <input
+                        className="bg-gray-200 border-gray-500 rounded-sm h-8 "
+                        type="text" name="companyName" id="companyName"
+                    />
+                </div>
+
+
+                {/* website url */}
+                <div className="flex flex-col m-2 w-1/2">
+                    <label htmlFor="websiteURL">Website URL</label>
+                    <input
+                        className="bg-gray-200 border-gray-500 rounded-sm h-8"
+                        type="text" name="websiteURL" id="websiteURL"
+                    />
+                </div>
+
+            </div>
+
+            {/* 4TH ROW */}
 
             <div className="flex flex-row justify-center w-full">
 
@@ -80,6 +112,51 @@ export default function ContactForm() {
                 </div>
 
             </div>
+
+            {/* 5TH ROW  drop downs*/}
+
+            <div className="flex flex-row justify-center w-full">
+
+                {/* Industry */}
+                <div className="flex flex-col m-2 w-1/2">
+                    <label htmlFor="industry">Industry/Category</label>
+                    <select
+                        className="bg-gray-200 border-gray-500 rounded-sm h-8"
+                        name="industry"
+                        id="industry"
+                        defaultValue=""
+                    >
+                        <option value="" disabled hidden>
+                           
+                        </option>
+                        <option value="News">News</option>
+                        <option value="Ecommrerce">Ecommrerce</option>
+                        <option value="Blog">Blog</option>
+                    </select>
+                </div>
+
+                {/* Category */}
+                <div className="flex flex-col m-2 w-1/2">
+                    <label htmlFor="monthly-users">Monthly Users</label>
+                    <select
+                        className="bg-gray-200 border-gray-500 rounded-sm h-8"
+                        name="monthlyUsers"
+                        id="monthlyUsers"
+                        defaultValue=""
+                    >
+                        <option className="text-gray-300" value="" disabled hidden>
+                            
+                        </option>
+                        <option value="5k">&lt; 5k</option>
+                        <option value="10k">5k-10k</option>
+                        <option value="15k">&gt; 10k</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+
         </div>
     )
 }
