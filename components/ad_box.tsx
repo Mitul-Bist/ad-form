@@ -1,6 +1,12 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 
+interface AdBoxProps {
+    adName: string;
+    width: string;
+    height: string;
+}
+
 const adData = [
     {
         type: "Leaderboard",
@@ -107,7 +113,7 @@ export function useMousePosition() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
-        const handleMouseMove = (event) => {
+        const handleMouseMove = (event: MouseEvent) => {
             setMousePosition({
                 x: event.clientX,
                 y: event.clientY,
@@ -127,12 +133,12 @@ export function useMousePosition() {
 }
 
 
-export default function AdBox(props) {
+export default function AdBox( {adName, width, height} : AdBoxProps) {
     const [active, setActive] = useState(false);
     const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
-    const timeoutRef = useRef(null);
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);;
 
-    const adObj = adData.find((ad) => ad.type == props.adName);
+    const adObj = adData.find((ad) => ad.type == adName);
     const { x, y } = useMousePosition();
 
     const coordsRef = useRef({ x, y });
@@ -160,9 +166,9 @@ export default function AdBox(props) {
             onMouseLeave={handleMouseLeave}
             onScroll={() => setActive(false)}
         >
-            <div className="text-xl font-semibold text-gray-800">{props.adName}</div>
-            <div className="bg-white flex flex-col items-center justify-center text-xl shadow-2xl shadow-black/20" style={{ width: props.width, height: props.height }}>
-                {props.width.slice(0, -2)} x {props.height.slice(0, -2)}
+            <div className="text-xl font-semibold text-gray-800">{adName}</div>
+            <div className="bg-white flex flex-col items-center justify-center text-xl shadow-2xl shadow-black/20" style={{ width: width, height: height }}>
+                {width.slice(0, -2)} x {height.slice(0, -2)}
             </div>
             {
                 active &&
