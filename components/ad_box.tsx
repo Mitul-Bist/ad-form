@@ -133,10 +133,11 @@ export function useMousePosition() {
 }
 
 
-export default function AdBox( {adName, width, height} : AdBoxProps) {
-    const [active, setActive] = useState(false);
+export default function AdBox({ adName, width, height }: AdBoxProps) {
+    const [infoBox, setInfoBox] = useState(false);
     const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
-    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);;
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    //const [active, setActive] = useState(null)
 
     const adObj = adData.find((ad) => ad.type == adName);
     const { x, y } = useMousePosition();
@@ -150,13 +151,13 @@ export default function AdBox( {adName, width, height} : AdBoxProps) {
         timeoutRef.current = setTimeout(() => {
             // Freeze the mouse position right when the timer finishes
             setTooltipPos(coordsRef.current);
-            setActive(true);
+            setInfoBox(true);
         }, 300);
     }
 
     const handleMouseLeave = () => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        setActive(false);
+        setInfoBox(false);
     };
 
     return (
@@ -164,14 +165,16 @@ export default function AdBox( {adName, width, height} : AdBoxProps) {
             className="my-5 mx-2"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            onScroll={() => setActive(false)}
+            onScroll={() => setInfoBox(false)}
         >
-            <div className="text-xl font-semibold text-gray-800">{adName}</div>
-            <div className="bg-white flex flex-col items-center justify-center text-xl shadow-2xl shadow-black/20" style={{ width: width, height: height }}>
+            <div className="text-xl font-semibold text-gray-800 mb-0.5">{adName}</div>
+            <div
+                className={`bg-white flex flex-col items-center justify-center text-xl transition-all duration-200 shadow-md hover:shadow-2xl hover:-translate-y-1 shadow-black/20`}
+                style={{ width: width, height: height }}>
                 {width.slice(0, -2)} x {height.slice(0, -2)}
             </div>
             {
-                active &&
+                infoBox &&
                 <div
                     className="fixed z-10 w-[25vw] p-2 bg-gray-800 text-gray-50 text-sm font-thin rounded-sm" style={{ top: tooltipPos.y + 10, left: tooltipPos.x + 10 }}>
                     {adObj?.description}

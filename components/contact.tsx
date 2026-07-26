@@ -2,7 +2,7 @@ export default function ContactForm() {
     return (
         <div className="bg-white w-3/5 p-2 flex flex-col rounded-sm mt-5">
             {/*TITLE  */}
-            <div className="flex flex-col m-2">
+            <div className="flex flex-col m-2 ">
                 <div className="text-black/30">part 1 of 2</div>
                 <div className="text-xl font-semibold">CONTACT INFORMATION</div>
                 <div className="text-black/50 text-lg ">Contact Person</div>
@@ -64,7 +64,7 @@ export default function ContactForm() {
 
             {/* 3RD ROW */}
 
-            
+
             <div className="flex flex-row justify-center w-full">
 
                 {/* Company - Name */}
@@ -126,12 +126,14 @@ export default function ContactForm() {
                         id="industry"
                         defaultValue=""
                     >
-                        <option value="" disabled hidden>
-                           
-                        </option>
+                        <option value="" disabled hidden></option>
                         <option value="News">News</option>
-                        <option value="Ecommrerce">Ecommrerce</option>
+                        <option value="E-commerce">E-commerce</option>
                         <option value="Blog">Blog</option>
+                        <option value="Education">Education</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
@@ -145,7 +147,7 @@ export default function ContactForm() {
                         defaultValue=""
                     >
                         <option className="text-gray-300" value="" disabled hidden>
-                            
+
                         </option>
                         <option value="5k">&lt; 5k</option>
                         <option value="10k">5k-10k</option>
