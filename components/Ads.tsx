@@ -77,7 +77,7 @@ export default function AdForm() {
 
             <div className="flex flex-row justify-between">
                 <div className="flex flex-col m-2">
-                    <div className=" text-black/30">part 2 of 2</div>
+                    <div className=" text-black/30">part 2 of 3</div>
                     <div className=" text-xl font-semibold">ADVERTISEMENT SIZES</div>
                 </div>
 
@@ -101,7 +101,7 @@ export default function AdForm() {
                 <div className="w-3/15 ">Ad-Type</div>
                 <div className="w-2/15 ">Dimensions</div>
                 <div className="w-3/15 ">Placement</div>
-                <div className="w-4/15 ">Cost</div>
+                <div className="w-4/15 ">Cost Per Day</div>
             </div>
 
             {
