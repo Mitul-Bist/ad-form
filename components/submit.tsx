@@ -1,9 +1,13 @@
+import ReCAPTCHA from "react-google-recaptcha";
+import { RefObject } from "react";
+
 interface submitStates {
-    submit : boolean;
-    loading : boolean;
+    submit: boolean;
+    loading: boolean;
+    capRef: RefObject<ReCAPTCHA | null>;
 }
 
-export default function SubmitSection({submit, loading} : submitStates) {
+export default function SubmitSection({ submit, loading, capRef }: submitStates) {
     return (
         <div className="bg-white w-3/5 p-4 pt-2 flex flex-col rounded-sm mt-5 justify-center">
             <div className="h-1 w-40 mb-5 bg-blue-500 rounded-full"></div>
@@ -25,20 +29,27 @@ export default function SubmitSection({submit, loading} : submitStates) {
                         </ul>
                     </div>
                 }
-                {/* SUBMIT BUTTON */}
-                <button
-                    className={`${!submit ? "bg-blue-500" : "bg-green-500"} 
-                text-white font-semibold text-2xl w-70 px-14 h-13 mt-2 mr-30 rounded-md 
-                flex flex-row items-center justify-center gap-2 transition-all duration-200 hover:-translate-y-0.5`}
-                    type="submit"
-                    disabled={loading}>
-                    {loading && (
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    )}
-                    {!submit ? (loading ? "uploading..." : "Submit") : "Submitted"}
-                </button>
-            </div>
+                {/* SUBMIT BUTTON + CAPTCHA*/}
 
+                <div className="flex flex-col ">
+                    <ReCAPTCHA
+                        ref={capRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                    />
+                    <button
+                        className={`${!submit ? "bg-blue-500" : "bg-green-500"} 
+                            text-white font-semibold text-2xl w-70 px-14 h-13 mt-2 mr-30 rounded-md 
+                            flex flex-row items-center justify-center gap-2 transition-all duration-200 hover:-translate-y-0.5`}
+                        type="submit"
+                        disabled={loading}>
+                        {loading && (
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        )}
+                        {!submit ? (loading ? "uploading..." : "Submit") : "Submitted"}
+                    </button>
+                </div>
+
+            </div>
         </div>
     )
 }

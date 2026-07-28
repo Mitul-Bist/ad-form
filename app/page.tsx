@@ -6,18 +6,30 @@ import AdForm from "@/components/Ads";
 import ImageForm from "@/components/img_Form";
 import IntroSection from "@/components/Intro";
 import SubmitSection from "@/components/submit";
-import React, { useState } from 'react';
-
+import ReCAPTCHA from "react-google-recaptcha";
+import React, { useState, useRef } from 'react';
 
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [submit, setSubmit] = useState(false);
 
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(e.currentTarget);
+
+    const captchaToken = recaptchaRef.current?.getValue();
+    
+
+    if (!captchaToken) {
+      alert('Please complete the CAPTCHA before submitting.');
+      return;
+    }
+
+    formData.append('g-recaptcha-response', captchaToken);
 
     setLoading(true);
 
@@ -31,12 +43,15 @@ export default function Home() {
       const result = await response.json();
 
       if (response.ok) {
-        console.log("Success:", result);
         // Show success message or reset the form
+        console.log("Success:", result);
         form.reset();
+        // Resets the reCAPTCHA checkbox on success
+        recaptchaRef.current?.reset();
       }
     } catch (error) {
       console.error(error);
+      recaptchaRef.current?.reset();
     } finally {
       setLoading(false);
       setSubmit(true);
@@ -59,7 +74,7 @@ export default function Home() {
         <AdForm />
         <ImageForm />
         {/* SUBMIT */}
-        <SubmitSection submit={submit} loading={loading} />
+        <SubmitSection submit={submit} loading={loading} capRef={recaptchaRef} />
 
       </form>
     </div>

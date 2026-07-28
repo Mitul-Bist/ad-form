@@ -6,6 +6,31 @@ const URL = "https://script.google.com/macros/s/AKfycbyiUdNL8OZd9zq0-9fqyyG0bnxQ
 
 export async function POST(req) {
     const formData = await req.formData();
+    const captchaToken = formData.get('g-recaptcha-response');
+
+    // No captcha
+    if (!captchaToken) {
+      return NextResponse.json(
+        { message: 'CAPTCHA token missing.' },
+        { status: 400 }
+      );
+    }
+
+    const googleRes = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
+      { method: 'POST' }
+    );
+
+    const googleData = await googleRes.json();
+
+    if (!googleData.success) {
+      return NextResponse.json(
+        { message: 'Invalid CAPTCHA token.' },
+        { status: 400 }
+      );
+    }
+
+    // 2. CAPTCHA passed
 
     const file = formData.get("analytics");
 
