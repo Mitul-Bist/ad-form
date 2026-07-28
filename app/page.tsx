@@ -5,6 +5,7 @@ import ContactForm from "@/components/contact";
 import AdForm from "@/components/Ads";
 import ImageForm from "@/components/img_Form";
 import IntroSection from "@/components/Intro";
+import SubmitSection from "@/components/submit";
 import React, { useState } from 'react';
 
 
@@ -57,38 +58,8 @@ export default function Home() {
         <ContactForm />
         <AdForm />
         <ImageForm />
-
         {/* SUBMIT */}
-        <div className="bg-white w-3/5 p-4 flex flex-col rounded-sm mt-5">
-          {!submit ? (
-            // BEFORE SUBMISSION
-            <div className="flex flex-row justify-between">
-              <div>
-                <p>Your Privacy Matters</p>
-                <p>We do not sell your information.</p>
-                <p>Responses are used only for research.</p>
-              </div>
-              {/* SUBMIT BUTTON */}
-              <button
-                className="bg-blue-500 text-white font-semibold text-2xl py-2 px-14 h-13 mt-2 mr-30 rounded-md flex flex-row items-center gap-2 transition-all duration-200 hover:-translate-y-0.5"
-                type="submit"
-                disabled={loading}>
-                {loading && (
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                )}
-                {loading ? "uploading..." : "Submit"}
-              </button>
-            </div>
-          )
-            :
-            // AFTER SUBMISSION
-            <div >
-              <p>Thank you!</p>
-              <p>Your response has been received.</p>
-              <p>We appreciate your participation.</p>
-            </div>
-          }
-        </div>
+        <SubmitSection submit={submit} loading={loading} />
 
       </form>
     </div>

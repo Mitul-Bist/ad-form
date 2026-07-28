@@ -73,17 +73,18 @@ const adSizes = [
 export default function AdForm() {
     return (
         <div className="bg-white w-3/5 p-2 flex flex-col rounded-sm mt-5 pb-5" >
+            <div className="h-1 w-40 mb-5 bg-blue-500 rounded-full"></div>
             {/*TITLE  */}
 
             <div className="flex flex-row justify-between">
                 <div className="flex flex-col m-2">
-                    <div className=" text-black/30">part 2 of 3</div>
-                    <div className=" text-xl font-semibold">ADVERTISEMENT SIZES</div>
+                    <div className="text-slate-700">part 2 of 3</div>
+                    <div className="text-slate-900 text-xl font-semibold">ADVERTISEMENT SIZES</div>
                 </div>
 
                 <div className="flex flex-col m-2 items-end">
-                    <div className=" text-black/30">you can view your ad sizes here</div>
-                    <Link className="flex flex-row transition-all duration-200 ease-in-out hover:text-blue-600" href={"/ad-sizes"} target="_blank" rel="noopener noreferrer">
+                    <div className=" text-slate-700">you can view your ad sizes here</div>
+                    <Link className="text-slate-900 flex flex-row transition-all duration-200 ease-in-out hover:text-blue-500" href={"/ad-sizes"} target="_blank" rel="noopener noreferrer">
                         <div className="text-xl font-semibold text-right ">REFERENCE</div>
                         <div className="m-1">
                             <SquareArrowOutUpRight size={19}/>

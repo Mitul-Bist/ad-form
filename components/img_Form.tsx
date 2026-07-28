@@ -1,10 +1,11 @@
 export default function ImageForm() {
     return (
         <div className="bg-white w-3/5 p-2 flex flex-col rounded-sm mt-5 pb-5">
+            <div className="h-1 w-40 mb-5 bg-blue-500 rounded-full"></div>
             {/*TITLE  */}
             <div className="flex flex-col m-2 ">
-                <div className="text-black/30">part 3 of 3</div>
-                <div className="text-xl font-semibold">ANALYTICS</div>
+                <div className="text-slate-700">part 3 of 3</div>
+                <div className="text-slate-900 text-xl font-semibold">ANALYTICS</div>
             </div>
 
             <div className="m-2 flex flex-col">

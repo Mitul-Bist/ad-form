@@ -14,7 +14,7 @@ export default function IntroSection(){
 
             <ul className="mt-6 mx-8 pl-5 text-slate-700 text-base list-disc marker:text-xl marker:text-blue-500 flex flex-col gap-3">
                 <li>It only takes 2–3 minutes to complete</li>
-                <li>Your responses are <span className="font-semibold">anonymous and greatly appreciated.</span></li>
+                <li>Your responses are <span className="font-semibold">greatly appreciated.</span></li>
             </ul>
         </div>
     );

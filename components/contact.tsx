@@ -3,11 +3,12 @@ import Field from "./Field"
 export default function ContactForm() {
     return (
         <div className="bg-white w-3/5 p-2 flex flex-col rounded-sm mt-5">
+            <div className="h-1 w-40 mb-5 bg-blue-500 rounded-full"></div>
             {/*TITLE  */}
             <div className="flex flex-col m-2 ">
-                <div className="text-black/30">part 1 of 3</div>
-                <div className="text-xl font-semibold">CONTACT INFORMATION</div>
-                <div className="text-black/50 text-lg ">Contact Person</div>
+                <div className="text-slate-500">part 1 of 3</div>
+                <div className="text-slate-900 text-xl font-semibold">CONTACT INFORMATION</div>
+                <div className="text-slate-700 text-lg ">Contact Person</div>
             </div>
 
             {/* 1ST ROW */}
@@ -28,7 +29,7 @@ export default function ContactForm() {
 
 
             {/* COMPANY INFO */}
-            <div className="text-black/50 text-lg m-2">Company Information</div>
+            <div className="text-slate-700 text-lg m-2">Company Information</div>
 
             {/* 3RD ROW */}
             <div className="flex flex-row justify-center w-full">
