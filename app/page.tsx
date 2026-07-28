@@ -8,7 +8,7 @@ import IntroSection from "@/components/Intro";
 import SubmitSection from "@/components/submit";
 import ReCAPTCHA from "react-google-recaptcha";
 import React, { useState, useRef } from 'react';
-
+ 
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
