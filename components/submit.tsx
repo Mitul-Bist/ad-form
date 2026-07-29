@@ -9,9 +9,9 @@ interface submitStates {
 
 export default function SubmitSection({ submit, loading, capRef }: submitStates) {
     return (
-        <div className="bg-white w-3/5 p-4 pt-2 flex flex-col rounded-sm mt-5 justify-center">
+        <div className="bg-white w-full md:w-3/5 p-4 pt-2 flex flex-col rounded-sm mt-5 justify-center">
             <div className="h-1 w-40 mb-5 bg-blue-500 rounded-full"></div>
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-col md:flex-row justify-between">
                 {!submit ?
                     <div>
                         <p className="text-xl font-semibold text-slate-900">Your Privacy Matters</p>
@@ -32,10 +32,12 @@ export default function SubmitSection({ submit, loading, capRef }: submitStates)
                 {/* SUBMIT BUTTON + CAPTCHA*/}
 
                 <div className="flex flex-col ">
-                    <ReCAPTCHA
-                        ref={capRef}
-                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                    />
+                    {!submit && 
+                        <ReCAPTCHA
+                            ref={capRef}
+                            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                        />
+                    }
                     <button
                         className={`${!submit ? "bg-blue-500" : "bg-green-500"} 
                             text-white font-semibold text-2xl w-70 px-14 h-13 mt-2 mr-30 rounded-md 

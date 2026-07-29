@@ -10,33 +10,29 @@ export async function POST(req) {
 
     // No captcha
     if (!captchaToken) {
-      return NextResponse.json(
-        { message: 'CAPTCHA token missing.' },
-        { status: 400 }
-      );
+        return NextResponse.json(
+            { message: 'CAPTCHA token missing.' },
+            { status: 400 }
+        );
     }
 
     const googleRes = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
-      { method: 'POST' }
+        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
+        { method: 'POST' }
     );
 
     const googleData = await googleRes.json();
 
     if (!googleData.success) {
-      return NextResponse.json(
-        { message: 'Invalid CAPTCHA token.' },
-        { status: 400 }
-      );
+        return NextResponse.json(
+            { message: 'Invalid CAPTCHA token.' },
+            { status: 400 }
+        );
     }
 
     // 2. CAPTCHA passed
 
     const file = formData.get("analytics");
-
-    if (!file || !(file instanceof File) || file.size === 0) {
-        return NextResponse.json({ error: "Image is required" }, { status: 400 });
-    }
 
     const textData = {};
     for (const [key, value] of formData.entries()) {
@@ -48,18 +44,19 @@ export async function POST(req) {
 
     console.log(textData);
 
-    // 2. Convert image file to Base64
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const fileBase64 = buffer.toString("base64");
+    const payload = { ...textData }
 
-    // 3. Combine text data + file payload
-    const payload = {
-        ...textData,
-        fileBase64,
-        fileName: file.name,
-        fileMimeType: file.type,
-    };
+    if (file && (file instanceof File) && file.size !== 0) {
+        // 2. Convert image file to Base64
+        const bytes = await file.arrayBuffer();
+        const buffer = Buffer.from(bytes);
+        const fileBase64 = buffer.toString("base64");
+
+        // 3. Combine text data + file payload
+        payload.fileBase64 = fileBase64;
+        payload.fileName = file.name;
+        payload.fileMimeType = file.type;
+    }
 
     // 4. Send everything in one POST request to Google Apps Script
     const sheetResponse = await fetch(URL, {

@@ -1,6 +1,6 @@
 export default function IntroSection(){
     return(
-        <div className="bg-white w-3/5 p-4 flex flex-col rounded-sm mt-5">
+        <div className="bg-white w-full md:w-3/5 p-4 flex flex-col rounded-sm mt-5">
             <div className="h-1 w-40 mb-5 bg-blue-500 rounded-full"></div>
             <h1 className="text-3xl font-semibold text-slate-900">
                 Help Us Understand <span className="text-blue-600">Website Advertising</span>

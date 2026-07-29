@@ -8,7 +8,7 @@ export default function Ads() {
                 <h1 className="text-4xl font-semibold text-white">IAB Fixed Size Ad Specifications</h1>
             </div>
             <div className="bg-gray-300">
-                <div className="flex flex-row justify-around">
+                <div className="flex flex-col md:flex-row justify-around">
                     <div className="flex flex-col m-3">
                         <AdBox adName="Billboard" width="970px" height="250px" />
                         <AdBox adName="Large Leaderboard" width="970px" height="90px" />
@@ -17,8 +17,8 @@ export default function Ads() {
                     <AdBox adName="Half Page" width="300px" height="600px" />
                 </div>
 
-                <div className="flex flex-row justify-around">
-
+                <div className="flex flex-col md:flex-row justify-around">
+                
                     <AdBox adName="Wide Skyscraper" width="160px" height="600px" />
 
                     <div className="flex flex-col">

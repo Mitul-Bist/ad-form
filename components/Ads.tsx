@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {SquareArrowOutUpRight} from 'lucide-react';
+import { SquareArrowOutUpRight } from 'lucide-react';
 
 const adSizes = [
     {
@@ -72,22 +72,25 @@ const adSizes = [
 
 export default function AdForm() {
     return (
-        <div className="bg-white w-3/5 p-2 flex flex-col rounded-sm mt-5 pb-5" >
+        <div className="bg-white w-full md:w-3/5 p-2 flex flex-col rounded-sm mt-5 pb-5" >
             <div className="h-1 w-40 mb-5 bg-blue-500 rounded-full"></div>
             {/*TITLE  */}
 
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex flex-col m-2">
                     <div className="text-slate-700">part 2 of 3</div>
                     <div className="text-slate-900 text-xl font-semibold">ADVERTISEMENT SIZES</div>
                 </div>
 
-                <div className="flex flex-col m-2 items-end">
+                <div className="flex flex-col m-2 md:items-end">
                     <div className=" text-slate-700">you can view your ad sizes here</div>
-                    <Link className="text-slate-900 flex flex-row transition-all duration-200 ease-in-out hover:text-blue-500" href={"/ad-sizes"} target="_blank" rel="noopener noreferrer">
+                    <Link
+                        className="text-slate-900 flex flex-row transition-all duration-200 ease-in-out hover:text-blue-500"
+                        href={"/ad-sizes"} target="_blank" rel="noopener noreferrer"
+                    >
                         <div className="text-xl font-semibold text-right ">REFERENCE</div>
                         <div className="m-1">
-                            <SquareArrowOutUpRight size={19}/>
+                            <SquareArrowOutUpRight size={19} />
                         </div>
                     </Link>
                 </div>
@@ -98,10 +101,10 @@ export default function AdForm() {
 
             {/* ad table */}
             <div className="flex flex-row justify-around w-full mt-4 text-lg border-solid border-y-2 border-y-gray-600 bg-gray-200">
-                <div className="w-1/15 ">S.no</div>
+                <div className="w-1/15 hidden md:block">S.no</div>
                 <div className="w-3/15 ">Ad-Type</div>
                 <div className="w-2/15 ">Dimensions</div>
-                <div className="w-3/15 ">Placement</div>
+                <div className="w-3/15 hidden md:block">Placement</div>
                 <div className="w-4/15 ">Cost Per Day</div>
             </div>
 
@@ -109,10 +112,10 @@ export default function AdForm() {
                 adSizes.map((ad, i) => {
                     return (
                         <div className="flex flex-row justify-around w-full mt-5">
-                            <div className="w-1/15">{i+1}</div>
+                            <div className="w-1/15 hidden md:block">{i + 1}</div>
                             <div className="w-3/15">{ad.type}</div>
                             <div className="w-2/15">{ad.dimensions}</div>
-                            <div className="w-3/15">{ad.placement}</div>
+                            <div className="w-3/15 hidden md:block">{ad.placement}</div>
                             <input
                                 className="w-4/15 bg-gray-200 border-gray-500 rounded-sm h-8 "
                                 type="number" name={ad.inputName} id={ad.inputName}
@@ -121,6 +124,28 @@ export default function AdForm() {
                     )
                 })
             }
+
+            <div className="mt-5 p-2">
+                <div className="text-xl text-slate-900 ">Confused About Ad placements? check out our Dummy pages to understand. </div>
+                <ul className="text-slate-700 list-disc marker:text-xl marker:text-blue-500 px-10 mt-2">
+                    <li>
+                        <Link className="flex flex-row w-fit" href={"/example-homepage"} target="_blank" rel="noopener noreferrer" >
+                            <div>An Example <span className="text-slate-800 font-semibold hover:text-blue-500">Home Page</span></div>
+                            <div className="m-1">
+                                <SquareArrowOutUpRight size={18} />
+                            </div>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className="flex flex-row w-fit " href={"/example-article"} target="_blank" rel="noopener noreferrer" >
+                            <div>An Example <span className="text-slate-800 font-semibold hover:text-blue-500">Blog/Article</span></div>
+                            <div className="m-1">
+                                <SquareArrowOutUpRight size={18} />
+                            </div>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
 
         </div>
     )

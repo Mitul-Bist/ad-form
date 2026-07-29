@@ -2,17 +2,17 @@ import Field from "./Field"
 
 export default function ContactForm() {
     return (
-        <div className="bg-white w-3/5 p-2 flex flex-col rounded-sm mt-5">
+        <div className="bg-white w-full md:w-3/5 p-2 flex flex-col rounded-sm mt-5">
             <div className="h-1 w-40 mb-5 bg-blue-500 rounded-full"></div>
             {/*TITLE  */}
             <div className="flex flex-col m-2 ">
                 <div className="text-slate-500">part 1 of 3</div>
                 <div className="text-slate-900 text-xl font-semibold">CONTACT INFORMATION</div>
-                <div className="text-slate-700 text-lg ">Contact Person</div>
+                <div className="text-slate-900 text-lg ">Contact Person</div>
             </div>
 
             {/* 1ST ROW */}
-            <div className="flex flex-row justify-center w-full">
+            <div className="flex flex-col md:flex-row justify-center w-full">
                 {/* first name */}
                 <Field label="First Name" name="firstName" type="text" />
                 {/* last name */}
@@ -20,7 +20,7 @@ export default function ContactForm() {
             </div>
 
             {/* 2ND ROW */}
-            <div className="flex flex-row justify-center w-full">
+            <div className="flex flex-col md:flex-row justify-center w-full">
                 {/* email */}
                 <Field label="E-mail" name="mail_ID" type="email" />
                 {/* phone */}
@@ -29,10 +29,10 @@ export default function ContactForm() {
 
 
             {/* COMPANY INFO */}
-            <div className="text-slate-700 text-lg m-2">Company Information</div>
+            <div className="text-slate-900 text-lg m-2">Company Information</div>
 
             {/* 3RD ROW */}
-            <div className="flex flex-row justify-center w-full">
+            <div className="flex flex-col md:flex-row justify-center w-full">
                 {/* Company - Name */}
                 <Field label="Company Name" name="companyName" type="text" />
                 {/* website url */}
@@ -40,10 +40,10 @@ export default function ContactForm() {
             </div>
 
             {/* 4TH ROW */}
-            <div className="flex flex-row justify-center w-full">
+            <div className="flex flex-col md:flex-row justify-center w-full">
 
                 {/* address */}
-                <div className="flex flex-col m-2 w-3/4">
+                <div className="flex flex-col m-2 w-9/10 md:w-3/4">
                     <label htmlFor="address">Address</label>
                     <input
                         className="bg-gray-200 border-gray-500 rounded-sm h-8 "
@@ -53,7 +53,7 @@ export default function ContactForm() {
 
 
                 {/* pin code */}
-                <div className="flex flex-col m-2 w-1/4">
+                <div className="flex flex-col m-2 w-9/10 md:w-1/4">
                     <label htmlFor="pinCode">Pin-code</label>
                     <input
                         className="bg-gray-200 border-gray-500 rounded-sm h-8"
@@ -64,10 +64,10 @@ export default function ContactForm() {
             </div>
 
             {/* 5TH ROW  drop downs*/}
-            <div className="flex flex-row justify-center w-full">
+            <div className="flex flex-col md:flex-row justify-center w-full">
 
                 {/* Industry */}
-                <div className="flex flex-col m-2 w-1/2">
+                <div className="flex flex-col m-2 w-9/10 md:w-1/2">
                     <label htmlFor="industry">Industry/Category</label>
                     <select
                         className="bg-gray-200 border-gray-500 rounded-sm h-8"
@@ -87,7 +87,7 @@ export default function ContactForm() {
                 </div>
 
                 {/* Category */}
-                <div className="flex flex-col m-2 w-1/2">
+                <div className="flex flex-col m-2 w-9/10 md:w-1/2">
                     <label htmlFor="monthly-users">Monthly Users</label>
                     <select
                         className="bg-gray-200 border-gray-500 rounded-sm h-8"
